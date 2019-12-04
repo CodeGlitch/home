@@ -32,106 +32,136 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Column(
-            children: <Widget>[
-              Container(height: 5),
-              HandCursor(
-                child: Container(
-                  margin: EdgeInsets.all(10.0),
-                  height: 60,
-                  width: 180,
-                  color: Colors.blue,
-                  child: IconButton(
-                      icon: Text(
-                        "linkedin",
-                        style: TextStyle(
-                            fontSize: 32,
-                            color: Colors.white,
-                            fontFamily: "Arial", fontFamilyFallback: ["helvetica", "courier"]),
-                      ),
-                      onPressed: () {
-                        js.context.callMethod(
-                            "open", ["https://linkedin.com/in/CodeGlitch"]);
-                      }),
+      body: SingleChildScrollView(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Column(
+              children: <Widget>[
+                Container(height: 5),
+                HandCursor(
+                  child: Container(
+                    margin: EdgeInsets.all(10.0),
+                    height: 60,
+                    width: 180,
+                    color: Colors.blueAccent,
+                    child: IconButton(
+                        icon: Text(
+                          "Twitter",
+                          style: TextStyle(
+                              fontSize: 32,
+                              color: Colors.white,
+                              fontFamily: "Arial",
+                              fontFamilyFallback: ["helvetica", "courier"]),
+                        ),
+                        onPressed: () {
+                          js.context.callMethod(
+                              "open", ["https://twitter.com/CodeGlitch"]);
+                        }),
+                  ),
                 ),
-              ),
-              Container(height: 5),
-              HandCursor(
-                child: Container(
-                  margin: EdgeInsets.all(10.0),
-                  height: 60,
-                  width: 180,
-                  color: Colors.blueAccent,
-                  child: IconButton(
-                      icon: Text(
-                        "twitter",
-                        style: TextStyle(
-                            fontSize: 32,
-                            color: Colors.white,
-                            fontFamily: "Arial", fontFamilyFallback: ["helvetica", "courier"]),
-                      ),
-                      onPressed: () {
-                        js.context.callMethod(
-                            "open", ["https://twitter.com/CodeGlitch"]);
-                      }),
+                Container(height: 5),
+                HandCursor(
+                  child: Container(
+                    margin: EdgeInsets.all(10.0),
+                    height: 60,
+                    width: 180,
+                    color: Colors.grey,
+                    child: IconButton(
+                        icon: Text(
+                          "Medium",
+                          style: TextStyle(
+                              fontSize: 32,
+                              color: Colors.white,
+                              fontFamily: "Arial",
+                              fontFamilyFallback: ["helvetica", "courier"]),
+                        ),
+                        onPressed: () {
+                          js.context.callMethod(
+                              "open", ["https://medium.com/@codeglitch"]);
+                        }),
+                  ),
                 ),
-              ),
-              Container(height: 5),
-              HandCursor(
-                child: Container(
-                  margin: EdgeInsets.all(10.0),
-                  height: 60,
-                  width: 180,
-                  color: Colors.blueGrey,
-                  child: IconButton(
-                      icon: Text(
-                        "github",
-                        style: TextStyle(
-                            fontSize: 32,
-                            color: Colors.white,
-                            fontFamily: "Arial", fontFamilyFallback: ["helvetica", "courier"]),
-                      ),
-                      onPressed: () {
-                        js.context.callMethod(
-                            "open", ["https://github.com/CodeGlitch"]);
-                      }),
+                Container(height: 5),
+                HandCursor(
+                  child: Container(
+                    margin: EdgeInsets.all(10.0),
+                    height: 60,
+                    width: 180,
+                    color: Colors.blue,
+                    child: IconButton(
+                        icon: Text(
+                          "LinkedIn",
+                          style: TextStyle(
+                              fontSize: 32,
+                              color: Colors.white,
+                              fontFamily: "Arial",
+                              fontFamilyFallback: ["helvetica", "courier"]),
+                        ),
+                        onPressed: () {
+                          js.context.callMethod(
+                              "open", ["https://linkedin.com/in/CodeGlitch"]);
+                        }),
+                  ),
                 ),
-              ),
-              Container(height: 5),
-              HandCursor(
-                child: Container(
-                  margin: EdgeInsets.all(10.0),
-                  height: 60,
-                  width: 180,
-                  color: Colors.indigo,
-                  child: IconButton(
-                      icon: Text(
-                        "facebook",
-                        style: TextStyle(
-                            fontSize: 32,
-                            color: Colors.white,
-                            fontFamily: "Arial", fontFamilyFallback: ["helvetica", "courier"]),
-                      ),
-                      onPressed: () {
-                        js.context.callMethod(
-                            "open", ["https://www.facebook.com/CodeGlitch"]);
-                      }),
+                Container(height: 5),
+                HandCursor(
+                  child: Container(
+                    margin: EdgeInsets.all(10.0),
+                    height: 60,
+                    width: 180,
+                    color: Colors.blueGrey,
+                    child: IconButton(
+                        icon: Text(
+                          "GitHub",
+                          style: TextStyle(
+                              fontSize: 32,
+                              color: Colors.white,
+                              fontFamily: "Arial",
+                              fontFamilyFallback: ["helvetica", "courier"]),
+                        ),
+                        onPressed: () {
+                          js.context.callMethod(
+                              "open", ["https://github.com/CodeGlitch"]);
+                        }),
+                  ),
                 ),
-              ),
-              Text(
-                        "powered by Flutter Web",
-                        style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.white,
-                            fontFamily: "Arial", fontFamilyFallback: ["helvetica", "courier"]),
-                      ),
-            ],
-          ),
-        ],
+                Container(height: 5),
+                HandCursor(
+                  child: Container(
+                    margin: EdgeInsets.all(10.0),
+                    height: 60,
+                    width: 180,
+                    color: Colors.indigo,
+                    child: IconButton(
+                        icon: Text(
+                          "Facebook",
+                          style: TextStyle(
+                              fontSize: 32,
+                              color: Colors.white,
+                              fontFamily: "Arial",
+                              fontFamilyFallback: ["helvetica", "courier"]),
+                        ),
+                        onPressed: () {
+                          js.context.callMethod(
+                              "open", ["https://www.facebook.com/CodeGlitch"]);
+                        }),
+                  ),
+                ),
+                Text(
+                  "powered by Flutter Web",
+                  style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.white,
+                      fontFamily: "Arial",
+                      fontFamilyFallback: ["helvetica", "courier"]),
+                ),
+                Container(height: 15),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
