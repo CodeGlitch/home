@@ -1,7 +1,6 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'dart:html' as html;
-import 'dart:js' as js;
 
 void main() => runApp(MyApp());
 
@@ -28,127 +27,76 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  getBodyItem(String name, String url, Color backgroundColor) {
+    return Container(
+      margin: EdgeInsets.all(10.0),
+      height: 60,
+      width: 180,
+      color: backgroundColor,
+      child: IconButton(
+          icon: Text(
+            name,
+            style: TextStyle(
+                fontSize: 32,
+                color: Colors.white,
+                fontFamily: "Arial",
+                fontFamilyFallback: ["helvetica", "courier"]),
+          ),
+          onPressed: () {
+            _launchURL(url);
+          }).showCursorOnHover,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: SingleChildScrollView(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
+      body: Container(
+        color: Colors.black,
+        child: //Center(
+            //child:
+            ListView(
+          shrinkWrap: false,
           children: <Widget>[
             Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Container(height: 5),
-                HandCursor(
-                  child: Container(
-                    margin: EdgeInsets.all(10.0),
-                    height: 60,
-                    width: 180,
-                    color: Colors.blueAccent,
-                    child: IconButton(
-                        icon: Text(
-                          "Twitter",
-                          style: TextStyle(
-                              fontSize: 32,
-                              color: Colors.white,
-                              fontFamily: "Arial",
-                              fontFamilyFallback: ["helvetica", "courier"]),
-                        ),
-                        onPressed: () {
-                          js.context.callMethod(
-                              "open", ["https://twitter.com/CodeGlitch"]);
-                        }),
-                  ),
+                Text(
+                  "Emanuel Luis 💙",
+                  style: TextStyle(
+                      fontSize: 26,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.white,
+                      fontFamily: "Arial",
+                      fontFamilyFallback: ["helvetica", "courier"]),
                 ),
                 Container(height: 5),
-                HandCursor(
-                  child: Container(
-                    margin: EdgeInsets.all(10.0),
-                    height: 60,
-                    width: 180,
-                    color: Colors.grey,
-                    child: IconButton(
-                        icon: Text(
-                          "Medium",
-                          style: TextStyle(
-                              fontSize: 32,
-                              color: Colors.white,
-                              fontFamily: "Arial",
-                              fontFamilyFallback: ["helvetica", "courier"]),
-                        ),
-                        onPressed: () {
-                          js.context.callMethod(
-                              "open", ["https://medium.com/@codeglitch"]);
-                        }),
-                  ),
+                Text(
+                  "Software Developer @ SRAF 🐄 Azores 🐄 Happy be a part of Flutter Portugal! ",
+                  style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.w300,
+                      color: Colors.white,
+                      fontFamily: "Arial",
+                      fontFamilyFallback: ["helvetica", "courier"]),
                 ),
                 Container(height: 5),
-                HandCursor(
-                  child: Container(
-                    margin: EdgeInsets.all(10.0),
-                    height: 60,
-                    width: 180,
-                    color: Colors.blue,
-                    child: IconButton(
-                        icon: Text(
-                          "LinkedIn",
-                          style: TextStyle(
-                              fontSize: 32,
-                              color: Colors.white,
-                              fontFamily: "Arial",
-                              fontFamilyFallback: ["helvetica", "courier"]),
-                        ),
-                        onPressed: () {
-                          js.context.callMethod(
-                              "open", ["https://linkedin.com/in/CodeGlitch"]);
-                        }),
-                  ),
-                ),
+                getBodyItem("Twitter", "https://twitter.com/CodeGlitch",
+                    Colors.blueAccent),
                 Container(height: 5),
-                HandCursor(
-                  child: Container(
-                    margin: EdgeInsets.all(10.0),
-                    height: 60,
-                    width: 180,
-                    color: Colors.blueGrey,
-                    child: IconButton(
-                        icon: Text(
-                          "GitHub",
-                          style: TextStyle(
-                              fontSize: 32,
-                              color: Colors.white,
-                              fontFamily: "Arial",
-                              fontFamilyFallback: ["helvetica", "courier"]),
-                        ),
-                        onPressed: () {
-                          js.context.callMethod(
-                              "open", ["https://github.com/CodeGlitch"]);
-                        }),
-                  ),
-                ),
+                getBodyItem(
+                    "Medium", "https://medium.com/@codeglitch", Colors.grey),
                 Container(height: 5),
-                HandCursor(
-                  child: Container(
-                    margin: EdgeInsets.all(10.0),
-                    height: 60,
-                    width: 180,
-                    color: Colors.indigo,
-                    child: IconButton(
-                        icon: Text(
-                          "Facebook",
-                          style: TextStyle(
-                              fontSize: 32,
-                              color: Colors.white,
-                              fontFamily: "Arial",
-                              fontFamilyFallback: ["helvetica", "courier"]),
-                        ),
-                        onPressed: () {
-                          js.context.callMethod(
-                              "open", ["https://www.facebook.com/CodeGlitch"]);
-                        }),
-                  ),
-                ),
+                getBodyItem("LinkedIn", "https://linkedin.com/in/CodeGlitch",
+                    Colors.blue),
+                Container(height: 5),
+                getBodyItem(
+                    "GitHub", "https://github.com/CodeGlitch", Colors.blueGrey),
+                Container(height: 5),
+                getBodyItem("Facebook", "https://www.facebook.com/CodeGlitch",
+                    Colors.indigo),
                 Text(
                   "powered by Flutter Web",
                   style: TextStyle(
@@ -163,35 +111,29 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
+      //),
     );
+  }
+
+  _launchURL(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }
 
-class HandCursor extends Listener {
-  /*class HandCursor extends Listener {
-  static final appContainer = html.window.document.getElementById('app-container');
-  HandCursor({Widget child}) : super(
-  MouseTrackerAnnotation(onHover: onhover, onExit: onexit), child: child);
-  static onhover(PointerHoverEvent event){appContainer.style.cursor = 'pointer';}
-  static onexit(PointerExitEvent event){ appContainer.style.cursor = 'default'; }
-}*/
-
-//https://stackoverflow.com/questions/56211844/flutter-web-mouse-hover-change-cursor-to-pointer
-  // get a reference to the body element that we previously altered
+extension HoverExtensions on Widget {
+  //from https://www.filledstacks.com/post/flutter-web-hover-and-mouse-cursor/
   static final appContainer =
       html.window.document.getElementById('app-container');
 
-  HandCursor({Widget child})
-      : super(
-            onPointerHover: (PointerHoverEvent evt) {
-              appContainer.style.cursor = 'pointer';
-              // you can use any of these:
-              // 'help', 'wait', 'move', 'crosshair', 'text' or 'pointer'
-              // more options/details here: http://www.javascripter.net/faq/stylesc.htm
-            },
-            onPointerExit: (PointerExitEvent evt) {
-              // set cursor's style 'default' to return it to the original state
-              appContainer.style.cursor = 'default';
-            },
-            child: child);
+  Widget get showCursorOnHover {
+    return MouseRegion(
+      child: this,
+      onHover: (event)  => appContainer.style.cursor = 'pointer',
+      onExit: (event) => appContainer.style.cursor = 'default',
+    );
+  }
 }
