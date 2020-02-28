@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'CodeGlitch @ Emanuel Luís',
+      title: 'Emanuel Luís @ CodeGlitch - Full stack developer @ SRAF',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -64,7 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
               children: <Widget>[
                 Container(height: 5),
                 Text(
-                  "Emanuel Luis 💙",
+                  "Emanuel Luís 💙",
                   style: TextStyle(
                       fontSize: 26,
                       fontWeight: FontWeight.w600,
@@ -74,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 Container(height: 5),
                 Text(
-                  "Software Developer @ SRAF 🐄 Azores 🐄 Happy be a part of Flutter Portugal! ",
+                  "Flutter Portugal, GDG Azores, Student, Full stack developer @ SRAF 🐄 Azores Islands 🐄 ",
                   style: TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.w300,
@@ -97,6 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 Container(height: 5),
                 getBodyItem("Facebook", "https://www.facebook.com/CodeGlitch",
                     Colors.indigo),
+                Container(height: 5),
                 Text(
                   "powered by Flutter Web",
                   style: TextStyle(
@@ -132,7 +133,7 @@ extension HoverExtensions on Widget {
   Widget get showCursorOnHover {
     return MouseRegion(
       child: this,
-      onHover: (event)  => appContainer.style.cursor = 'pointer',
+      onHover: (event) => appContainer.style.cursor = 'pointer',
       onExit: (event) => appContainer.style.cursor = 'default',
     );
   }
