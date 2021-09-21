@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Emanuel Luís @ CodeGlitch - Full stack developer @ SRAF',
+      title: 'Emanuel Luís @ CodeGlitch - Full stack developer @ Azores',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key}) : super(key: key);
+  MyHomePage({Key? key}) : super(key: key);
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -74,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 Container(height: 5),
                 Text(
-                  "Flutter Portugal, GDG Azores, Student, Full stack developer @ SRAF 🐄 Azores Islands 🐄 ",
+                  "Flutter Portugal, Full stack .NET Web Developer, Student @ Azores",
                   style: TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.w300,
@@ -133,8 +133,8 @@ extension HoverExtensions on Widget {
   Widget get showCursorOnHover {
     return MouseRegion(
       child: this,
-      onHover: (event) => appContainer.style.cursor = 'pointer',
-      onExit: (event) => appContainer.style.cursor = 'default',
+      onHover: (event) => appContainer!.style.cursor = 'pointer',
+      onExit: (event) => appContainer!.style.cursor = 'default',
     );
   }
 }
